@@ -1,4 +1,9 @@
 <!DOCTYPE html>
+{% if messg %}
+<script>
+    alert('{{messg}}')
+</script>
+{% endif %}
 <html>
 <body>
 
@@ -9,3 +14,5 @@ First name: <input type="text"  id="form" name="fname" value=""><br>
 
 </body>
 </html>
+
+

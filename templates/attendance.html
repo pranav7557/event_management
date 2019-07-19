@@ -9,7 +9,7 @@
 
 <script type="text/javascript">
 	
-	function att(eve){
+	function att(eve,id){
 		$.ajax({
 			type: "POST",
 			url: "/att",
@@ -18,7 +18,7 @@
 				event: eve,
 				val: document.getElementById("event_"+eve).checked,
 				userid: "{{userid}}",
-				id:"{{id}}"
+				id:id,
 			},
 			success: function(){
 
@@ -30,11 +30,97 @@
 </script>
 
 
-Name : {{data.participant1}}
-<br><br>
+<!--Name : {{data.participant1}}
+<br> <br>
 {% for x in events %}
 	{{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}')"><br>
 {% endfor %}
+
+</body>
+</html-->
+
+Name : {{data.participant1}}
+<br><br>
+
+{% if not data.attendance %}
+	{% for x in events %}
+
+	{{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')" ><br>
+
+{%endfor %}
+{% else %}
+
+{% if data.attendance.BugOff %}
+	{% if data.attendance.BugOff == "false" %}
+		BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'BugOff' in events%}
+		BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+{% if data.attendance.DC %}
+	{% if data.attendance.DC == "false" %}
+		DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'DC' in events%}
+		DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+{% if data.attendance.Cerebro %}
+	{% if data.attendance.Cerebro == "false" %}
+		Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'Cerebro' in events%}
+		Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+{% if data.attendance.DataQuest %}
+	{% if data.attendance.DataQuest == "false" %}
+		DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'DataQuest' in events%}
+		DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+{% if data.attendance.Friends %}
+	{% if data.attendance.Friends == "false" %}
+		Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'Friends' in events%}
+		Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+{% if data.attendance.Marvel %}
+	{% if data.attendance.Marvel == "false" %}
+		Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+	{% endif %}
+{%else%}
+	{%if 'Marvel' in events%}
+		Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+	{%endif%}
+{%endif%}
+
+
+
+
+<!--{% for x in Events %}-->
+<!--	{{x}}-->
+<!--{% endfor %}-->
+<!--<p>{{i.Events}}</p>-->
+
+{% endif %}
+<hr>
+
 
 </body>
 </html>

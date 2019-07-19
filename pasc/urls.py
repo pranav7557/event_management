@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import * 
+from . import views
 
 urlpatterns = [
+    path('', views.signIn),
+    path('postsign/',views.postsign),
     path('admin/', admin.site.urls),
     path('try/',func),
     path('search/',search),

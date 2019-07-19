@@ -3,6 +3,7 @@ import json
 from django.shortcuts import render
 import random
 import string
+import pyrebase
 
 # my database
 '''import firebase_admin
@@ -20,8 +21,23 @@ cred = credentials.Certificate("/home/pk/Downloads/pascdemo.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
-random = ''.join([random.choice(string.ascii_letters + string.digits)
-                  for n in range(20)])
+
+config = {
+    'apiKey': "AIzaSyAgNOnXoSPWipURDip7ff_wDX7Bq3s1pls",
+    'authDomain': "pascregistrationappdemo.firebaseapp.com",
+    'databaseURL': "https://pascregistrationappdemo.firebaseio.com",
+    'projectId': "pascregistrationappdemo",
+    'storageBucket': "pascregistrationappdemo.appspot.com",
+    'messagingSenderId': "100193450230",
+    'appId': "1:100193450230:web:45bcd71bc8cc1506"
+  };
+
+firebase = pyrebase.initialize_app(config)
+authe = firebase.auth()
+database = firebase.database()
+
+#random = ''.join([random.choice(string.ascii_letters + string.digits)
+ #                 for n in range(20)])
 
 #print (random)
 
@@ -34,6 +50,23 @@ data = {
 }
 
 # db.collection(u'cerebro').document(random).set(data)
+
+
+def signIn(request):
+    return render(request, "signIn.html")
+
+
+def postsign(request):
+
+    email = request.POST.get('email')
+    passw = request.POST.get("pass")
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "signIn.html", {"messg": message})
+    return render(request, "search.html")
+    #return render(request, "welcome.html", {"e": email})
 
 
 def update_att(req):
@@ -51,7 +84,8 @@ def update_att(req):
     temp3=db.collection(req.POST['event']).where('id', '==', req.POST['id']).get()
     for temp4 in temp3:
         uid2=temp4.id
-
+        
+    print(uid2)
     db.collection(req.POST['event']).document(uid2).update({'attendance' : req.POST['val']})
     
 
@@ -84,12 +118,18 @@ def data(request):
         info = request.POST['fname']
     # print(info)
     # print(db.collection('cerebro').get())
-    users_ref = db.collection('Combined')
-    docs = users_ref.where('id', '==', info).get()
-    #docs = users_ref.get()
+    #try:
+        users_ref = db.collection('Combined')
+        docs = users_ref.where('id', '==', info).get()
+        #docs = users_ref.get()
 
-    for doc in docs:
-        print(u'{} => {}'.format(doc.id, doc.to_dict()))
-        data = doc.to_dict()
-        docid = doc.id
-    return render(request, 'attendance.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
+        for doc in docs:
+            print(u'{} => {}'.format(doc.id, doc.to_dict()))
+            data = doc.to_dict()
+            docid = doc.id
+        return render(request, 'attendance.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
+    #except:
+        #message = "Invalid Credentials"
+        #return render(request, "search.html", {"messg": message})
+
+    #return render(request, 'attendance.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
