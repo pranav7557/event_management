@@ -23,7 +23,8 @@ urlpatterns = [
     path('postsign/',views.postsign),
     path('admin/', admin.site.urls),
     path('try/',func),
-    path('search/',search),
+    path('search/',search ,name="search"),
+    path('events/',events ,name="events"),
     path('data',data),
     path('att', update_att),
 ]

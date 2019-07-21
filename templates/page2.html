@@ -1,0 +1,437 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>participant data</title>
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'page2.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+
+
+
+<div class="container demo">
+   <div class="content">
+      <div id="large-header" class="large-header">
+         <canvas id="demo-canvas"></canvas>
+         <h1 class="main-title"><span class="thin"></span>Participant Data</h1>
+      </div>
+   </div>
+</div>
+
+<br>
+
+<table class="table table-striped" width="80%">
+  <tbody>
+
+<tr>    
+    <th>PARICIPANT 1:</th>
+    <td>{{data.participant1}}</td>
+</tr>
+
+<tr>    
+    <th>PARTICIPANT 2:</th>
+    <td>{{data.participant2}}</td>
+</tr>    
+
+<tr>    
+    <th>PULZION ID:</th>
+    <td>{{data.id}}</td>
+</tr>
+
+<tr>    
+    <th>EMAIL ID:</th>
+    <td>{{data.mail}}</td>
+</tr>
+
+<tr>    
+    <th>CONTACT NO:</th>
+    <td>{{data.contact}}</td>
+</tr>
+
+<tr>    
+    <th>COLLEGE:</th>
+    <td>{{data.collegeName}}</td>
+</tr>
+
+<tr>    
+    <th rowspan="13">EVENTS PARTICIPATED:</th>
+    <td>
+        {% if not data.attendance %}
+    {% for x in events %}
+
+    {{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')" ><br>
+
+{%endfor %}
+{% else %}
+
+{% if data.attendance.BugOff %}
+    {% if data.attendance.BugOff == "false" %}
+        BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'BugOff' in events%}
+        BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+{% if data.attendance.DC %}
+    {% if data.attendance.DC == "false" %}
+        DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'DC' in events%}
+        DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+{% if data.attendance.Cerebro %}
+    {% if data.attendance.Cerebro == "false" %}
+        Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'Cerebro' in events%}
+        Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+{% if data.attendance.DataQuest %}
+    {% if data.attendance.DataQuest == "false" %}
+        DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'DataQuest' in events%}
+        DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+{% if data.attendance.Friends %}
+    {% if data.attendance.Friends == "false" %}
+        Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'Friends' in events%}
+        Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+{% if data.attendance.Marvel %}
+    {% if data.attendance.Marvel == "false" %}
+        Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+    {% endif %}
+{%else%}
+    {%if 'Marvel' in events%}
+        Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+    {%endif%}
+{%endif%}
+
+
+
+
+<!--{% for x in Events %}-->
+<!--    {{x}}-->
+<!--{% endfor %}-->
+<!--<p>{{i.Events}}</p>-->
+
+{% endif %}
+    </td>
+</tr>
+
+  </tbody>
+</table>
+
+<a href="{% url 'search' %}"> <button> Done </button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+  <h2>Bordered Table</h2>
+  <p>The .table-bordered class adds borders to a table:</p>            
+  <table class="table table-bordered">
+    <tbody>
+<tr>    
+    <th>REGISTERED NAME:</th>
+    <td> tejas abhay joshi </td>
+</tr>
+
+<tr>    
+    <th>EMAIL ID:</th>
+    <td>anujsaoji@gmail.com</td>
+</tr>
+
+<tr>    
+    <th>CONTACT NO:</th>
+    <td>1234567890</td>
+</tr>
+
+<tr>    
+    <th>COLLEGE:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>PULZION ID:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>PARICIPANT 1:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>PARTICIPANT 2:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>EVENT:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>EVENT ROOM NO:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>SLOT:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>TIME:</th>
+    <td></td>
+</tr>
+
+<tr>    
+    <th>TOTAL EVENTS PARTICIPATED:</th>
+    <td></td>
+</tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- <table class="opening-hours table table-hover table-condensed table-bordered">
+	
+<tbody>
+
+<tr>	
+	<th>REGISTERED NAME:</th>
+    <td> tejas abhay joshi </td>
+</tr>
+
+<tr>	
+	<th>EMAIL ID:</th>
+    <td>anujsaoji@gmail.com</td>
+</tr>
+
+<tr>	
+	<th>CONTACT NO:</th>
+    <td>1234567890</td>
+</tr>
+
+<tr>	
+	<th>COLLEGE:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>PULZION ID:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>PARICIPANT 1:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>PARTICIPANT 2:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>EVENT:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>EVENT ROOM NO:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>SLOT:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>TIME:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>TOTAL EVENTS PARTICIPATED:</th>
+    <td></td>
+</tr>
+		
+
+</tbody>
+</table> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <table>
+
+<tr>	
+	<th>REGISTERED NAME</th>
+    <td>vgdjvbdsvansndvkbaerbvke </td>
+</tr>
+<tr>	
+	<th>EMAIL ID</th>
+    <td>cwagegjf ahqfkahrg ke,</td>
+</tr>
+
+<tr>	
+	<th>CONTACT NO:</th>
+    <td>wwfywbyibrgovube</td>
+</tr>
+
+<tr>	
+	<th>COLLEGE </th>
+    <td></td>
+</tr>
+<tr>	
+	<th>PULZION ID</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>PARICIPANT 1:</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>PARTICIPANT 2:</th>
+    <td></td>
+</tr>
+
+<tr>	
+	<th>EVENT</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>EVENT ROOM NO</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>SLOT</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>TIME</th>
+    <td></td>
+</tr>
+<tr>	
+	<th>TOTAL EVENTS PARTICIPATED</th>
+    <td></td>
+</tr>
+
+
+
+</table>
+ -->
+
+
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous">  
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+    
+    function att(eve,id){
+        $.ajax({
+            type: "POST",
+            url: "/att",
+            data: {
+                csrfmiddlewaretoken: '{{csrf_token}}',
+                event: eve,
+                val: document.getElementById("event_"+eve).checked,
+                userid: "{{userid}}",
+                id:id,
+            },
+            success: function(){
+
+            }
+        });
+
+    }
+
+</script>
+
+</body>
+</html>

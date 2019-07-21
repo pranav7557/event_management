@@ -1,0 +1,57 @@
+{% load static %}
+{% if messg %}
+<script>
+    alert('{{messg}}')
+</script>
+{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search page</title>
+
+  
+  <link rel="stylesheet" type="text/css" href="{% static 'page1.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Martel|Orbitron|Unica+One&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+
+<body style='overflow:hidden;'>
+
+<!-- TITLE -->
+
+<div class="container demo">
+   <div class="content">
+      <div id="large-header" class="large-header">
+         <canvas id="demo-canvas"></canvas>
+         <h1 class="main-title"><span class="thin"></span>PULZION</h1>
+         <h1 id="year" class="main-title"><span class="thin"></span>2019</h1>
+      </div>
+   </div>
+</div>
+
+
+
+
+<div class="container">
+<form action="/data" method="POST">
+{% csrf_token %}
+    <input id="id" type="text" name="fname" value="" placeholder="Pulzion Id">
+   
+    <br>
+
+    <button id="search" type="submit">Search</button>
+
+</form> 
+
+</div>
+
+</body>
+</html>
+
+
+
+ 
+

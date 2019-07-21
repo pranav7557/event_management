@@ -1,0 +1,59 @@
+{% load static %}
+{% if messg %}
+<script>
+    alert('{{messg}}')
+</script>
+{% endif %}
+
+<html>
+<head>
+  <title>login page</title>
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Martel|Orbitron|Unica+One&display=swap" rel="stylesheet">
+
+</head>
+
+
+
+
+<body style='overflow:hidden;'>
+
+
+<div class="container demo">
+   <div class="content">
+      <div id="large-header" class="large-header">
+         <canvas id="demo-canvas"></canvas>
+         <h1 class="main-title"><span class="thin"></span>PULZION</h1>
+         <h1 id="year" class="main-title"><span class="thin"></span>2019</h1>
+      </div>
+   </div>
+</div>
+
+
+
+<div class="container" >
+
+<form action="/postsign/" method="post">
+{% csrf_token %}
+     <h1 id="head">Log-In</h1>
+    <input  type="email" placeholder="Username" name="email">
+    <input id="pwd" type="password" placeholder="Password" name="pass" >
+    <br>
+    <button id="button" type="submit" value="SignIn">LogIn</button>
+
+</form> 
+
+</div>
+
+
+
+
+<script type="text/javascript" href="login.js"></script> 
+</body>
+</html>
+
+
+
+ 

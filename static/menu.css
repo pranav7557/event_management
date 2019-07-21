@@ -1,0 +1,124 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Unica One', cursive;
+  background-image: url("bg.jpg");
+  height: 100vw;
+  width: 100vw;
+}
+
+
+
+
+form{
+
+  margin-top: 130px;
+  border-radius:20px  20px 0 0 ;
+  background: transparent;
+  color:white;
+  position: absolute;
+  width: 300px;
+  height: 400px;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+form h1{
+  text-align: center;
+}
+
+
+
+
+
+button {
+  display: block;
+  margin: 20px auto;
+  background: transparent;
+  padding: 5px 10px;
+  display: block;
+  font-size:20px;
+  width: 180px;
+  text-align:center;
+  border: 3px solid green;
+  outline:none;
+  color:#fff;
+  border-radius:20px;
+}
+
+button:focus {
+  background: #66ff66;
+  font-size:20px;
+  width: 250px;
+  border: 3px solid lightblue;
+}
+
+
+
+
+@keyframes bg {
+  0% {
+      background: green;
+  }
+  5%{
+      background: transparent
+  }
+  100%{
+      background: green;
+  }
+}}
+
+
+.large-header {
+   position: relative;
+   width: 100%;
+   background: #111;
+   overflow: hidden;
+   background-size: cover;
+   background-position: center center;
+   z-index: 1;
+}
+
+
+
+.main-title {
+   text-shadow: 2px 2px 2px blue;
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   color: #F9F1E9;
+   text-align: center;
+   top: 20%;
+   left: 50%;
+   -webkit-transform: translate3d(-50%, -50%, 0);
+   transform: translate3d(-50%, -50%, 0);
+}
+#year {
+   position: absolute;
+   margin: 0;
+   padding: 0;
+   color: #F9F1E9;
+   text-align: center;
+   top: 30%;
+   left: 50%;
+   -webkit-transform: translate3d(-50%, -50%, 0);
+   transform: translate3d(-50%, -50%, 0);
+}
+
+.demo .main-title {
+   text-transform: uppercase;
+   font-size: 4.2em;
+   letter-spacing: 0.1em;
+}
+
+.main-title .thin {
+   font-weight: 200;
+}
+
+@media only screen and (max-width: 768px) {
+   .demo .main-title {
+      font-size: 3em;
+   }
+}
+

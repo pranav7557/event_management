@@ -37,7 +37,7 @@ authe = firebase.auth()
 database = firebase.database()
 
 #random = ''.join([random.choice(string.ascii_letters + string.digits)
- #                 for n in range(20)])
+#                 for n in range(20)])
 
 #print (random)
 
@@ -53,7 +53,7 @@ data = {
 
 
 def signIn(request):
-    return render(request, "signIn.html")
+    return render(request, "login.html")
 
 
 def postsign(request):
@@ -64,8 +64,8 @@ def postsign(request):
         user = authe.sign_in_with_email_and_password(email, passw)
     except:
         message = "Invalid Credentials"
-        return render(request, "signIn.html", {"messg": message})
-    return render(request, "search.html")
+        return render(request, "login.html", {"messg": message})
+    return render(request, "menu.html")
     #return render(request, "welcome.html", {"e": email})
 
 
@@ -84,13 +84,11 @@ def update_att(req):
     temp3=db.collection(req.POST['event']).where('id', '==', req.POST['id']).get()
     for temp4 in temp3:
         uid2=temp4.id
-        
+
     print(uid2)
     db.collection(req.POST['event']).document(uid2).update({'attendance' : req.POST['val']})
     
-
     #temp.update({'attendance.' + req.POST['event']: req.POST['val']})
-
     #db.collection(req.POST['event']).document(req.POST['userid']).update({'attendance' : req.POST['val']})
     #print(req.POST['event'])
     print(req.POST['event'] + "\n" + req.POST['val'])
@@ -110,15 +108,17 @@ def func(req):
 
 
 def search(request):
-    return render(request, "search.html")
+    return render(request, "page1.html")
 
+def events(request):
+    return render(request, "pulzion.html")
 
 def data(request):
     if request.method == "POST":
         info = request.POST['fname']
     # print(info)
     # print(db.collection('cerebro').get())
-    #try:
+    try:
         users_ref = db.collection('Combined')
         docs = users_ref.where('id', '==', info).get()
         #docs = users_ref.get()
@@ -127,9 +127,9 @@ def data(request):
             print(u'{} => {}'.format(doc.id, doc.to_dict()))
             data = doc.to_dict()
             docid = doc.id
-        return render(request, 'attendance.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
-    #except:
-        #message = "Invalid Credentials"
-        #return render(request, "search.html", {"messg": message})
+        return render(request, 'page2.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
+    except:
+        message = "Invalid Credentials"
+        return render(request, "page1.html", {"messg": message})
 
-    #return render(request, 'attendance.html', {'events': data['events'], 'data': data, 'userid': docid ,'id':data['id']})
+    

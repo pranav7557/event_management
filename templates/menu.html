@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>menu page</title>
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'menu.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Martel|Orbitron|Unica+One&display=swap" rel="stylesheet">
+
+</head>
+
+<body style='overflow:hidden;'>
+
+
+<div class="container demo">
+   <div class="content">
+      <div id="large-header" class="large-header">
+         <canvas id="demo-canvas"></canvas>
+         <h1 class="main-title"><span class="thin"></span>PULZION</h1>
+         <h1 id="year" class="main-title"><span class="thin"></span>2019</h1>
+      </div>
+   </div>
+</div>
+
+<div class="container" >
+
+<form>
+     {% csrf_token %}
+    <button type="submit" id="REGISTERED" formaction= "/search/" >REGISTERED</button>
+    <br>
+    <button type="submit" id="REGISTER" formaction="">REGISTER</button>
+    <br>
+    <button type="submit" id="EVENTS" formaction="{% url 'events' %}">EVENTS</button>
+
+</form> 
+
+</div>
+
+</body>
+</html>
