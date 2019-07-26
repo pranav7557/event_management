@@ -121,6 +121,9 @@ def events(request):
 def register(request):
     return render(request, "new_reg.html")
 
+def menu(request):
+    return render(request, "menu.html")
+
 
 def data(request):
     if request.method == "POST":
@@ -202,31 +205,46 @@ def add_data(request):
 
     if pr == 'on':
         x.append('Photoshop_Royale')
-        
+
     if cer == 'on':
-        x.append('Cerebro')   
+        x.append('Cerebro')
 
     random1 = ''.join([random.choice(string.ascii_letters + string.digits)
                        for n in range(20)])
 
     random2 = ''.join([random.choice(string.ascii_letters + string.digits)
                        for n in range(8)])
-    random2=random2.upper()
-    # print(random1)
-    # print(random2.upper())
+    random2 = random2.upper()
     print(x)
     print(name1)
     print(random1)
-    
-    d = {
-    'participant1': name1,
-    'participant2': name2,
-    'mail': emailid,
-    'events': x,
-    'id':random2 ,
-    'contact':cont,
-    'collegeName':college,
-}
-    db.collection(u'Combined').document(random1).set(d)
-    return render(request, "page3.html")
 
+    d1 = {
+        'participant1': name1,
+        'participant2': name2,
+        'mail': emailid,
+        'events': x,
+        'id': random2,
+        'contact': cont,
+        'collegeName': college,
+    }
+
+    db.collection(u'Combined').document(random1).set(d1)
+    
+    d2 = {
+        'participant1': name1,
+        'participant2': name2,
+        'mail': emailid,
+        'id': random2,
+        'contact': cont,
+        'collegeName': college,
+    }
+
+    for y in x:
+        random3 = ''.join([random.choice(string.ascii_letters + string.digits)
+                          for n in range(20)])
+        print(y)
+        print(random3)
+        db.collection(y).document(random3).set(d2)  
+              
+    return render(request, "page3.html",{"id":random2})
