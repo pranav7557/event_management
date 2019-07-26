@@ -1,36 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"> 	
-</script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+		</script>
 
-<script type="text/javascript">
-	
-	function att(eve,id){
-		$.ajax({
-			type: "POST",
-			url: "/att",
-			data: {
-				csrfmiddlewaretoken: '{{csrf_token}}',
-				event: eve,
-				val: document.getElementById("event_"+eve).checked,
-				userid: "{{userid}}",
-				id:id,
-			},
-			success: function(){
+	<script type="text/javascript">
 
-			}
-		});
+		function att(eve, id) {
+			$.ajax({
+				type: "POST",
+				url: "/att",
+				data: {
+					csrfmiddlewaretoken: '{{csrf_token}}',
+					event: eve,
+					val: document.getElementById("event_" + eve).checked,
+					userid: "{{userid}}",
+					id: id,
+				},
+				success: function () {
 
-	}
+				}
+			});
 
-</script>
+		}
+
+	</script>
 
 
-<!--Name : {{data.participant1}}
+	<!--Name : {{data.participant1}}
 <br> <br>
 {% for x in events %}
 	{{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}')"><br>
@@ -39,88 +38,90 @@
 </body>
 </html-->
 
-Name : {{data.participant1}}
-<br><br>
+	Name : {{data.participant1}}
+	<br><br>
 
-{% if not data.attendance %}
+	{% if not data.attendance %}
 	{% for x in events %}
 
-	{{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')" ><br>
+	{{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')"><br>
 
-{%endfor %}
-{% else %}
+	{%endfor %}
+	{% else %}
 
-{% if data.attendance.BugOff %}
+	{% if data.attendance.BugOff %}
 	{% if data.attendance.BugOff == "false" %}
-		BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+	BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'BugOff' in events%}
-		BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
+	BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
 
-{% if data.attendance.DC %}
+	{% if data.attendance.DC %}
 	{% if data.attendance.DC == "false" %}
-		DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+	DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'DC' in events%}
-		DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
+	DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
 
-{% if data.attendance.Cerebro %}
+	{% if data.attendance.Cerebro %}
 	{% if data.attendance.Cerebro == "false" %}
-		Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+	Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'Cerebro' in events%}
-		Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
+	Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
 
-{% if data.attendance.DataQuest %}
+	{% if data.attendance.DataQuest %}
 	{% if data.attendance.DataQuest == "false" %}
-		DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+	DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'DataQuest' in events%}
-		DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
+	DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
 
-{% if data.attendance.Friends %}
+	{% if data.attendance.Friends %}
 	{% if data.attendance.Friends == "false" %}
-		Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+	Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'Friends' in events%}
-		Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
+	Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
 
-{% if data.attendance.Marvel %}
+	{% if data.attendance.Marvel %}
 	{% if data.attendance.Marvel == "false" %}
-		Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+	Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')"><br>
 	{% endif %}
-{%else%}
+	{%else%}
 	{%if 'Marvel' in events%}
-		Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
+	Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')"><br>
 	{%endif%}
-{%endif%}
+	{%endif%}
+
+	
 
 
 
+	<!--{% for x in Events %}-->
+	<!--	{{x}}-->
+	<!--{% endfor %}-->
+	<!--<p>{{i.Events}}</p>-->
 
-<!--{% for x in Events %}-->
-<!--	{{x}}-->
-<!--{% endfor %}-->
-<!--<p>{{i.Events}}</p>-->
-
-{% endif %}
-<hr>
+	{% endif %}
+	<hr>
 
 
 </body>
+
 </html>

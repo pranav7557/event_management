@@ -15,16 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import * 
+from .views import *
 from . import views
 
 urlpatterns = [
     path('', views.signIn),
-    path('postsign/',views.postsign),
+    path('postsign/', views.postsign),
     path('admin/', admin.site.urls),
-    path('try/',func),
-    path('search/',search ,name="search"),
-    path('events/',events ,name="events"),
-    path('data',data),
+    path('try/', func),
+    path('search/', search, name="search"),
+    path('events/', events, name="events"),
+    path('register/', register, name="register"),
+    path('data', data),
     path('att', update_att),
+    path('add_data', add_data),
 ]

@@ -1,0 +1,182 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+  <title>Menu Page</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'new_reg.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Martel|Orbitron|Unica+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+</head>
+
+<body style="overflow: hidden">
+  <div class="container-demo">
+    <div class="content">
+      <div id="large-header" class="large-header">
+        <canvas id="demo-canvas"></canvas>
+        <h1 class="main-title"><span class="thin"></span>Participant Data</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+      <div class="form-container">
+        <form action="/add_data" method="POST">
+          {% csrf_token %}
+          Participant 1 : <input type="text" name="participant1" id="participant1" placeholder="Name of Participant 1"
+            style="width: 200px;"><br>
+          Participant 2 : <input type="text" name="participant2" id="participant2"
+            placeholder="Name of Participant 2"><br>
+          Email ID : <input type="email" name="mail" placeholder="Email ID"><br>
+          Contact Number : <input type="tel" name="contact" placeholder="Mobile Number"><br>
+          College Name : <input type="text" name="collegeName" placeholder="College Name"><br>
+          <h3>Events</h3><br>
+          <table>
+            <tr>
+              <td>Dextrous</td>
+              <td><input type="checkbox" class="events" name="Dextrous" ></td>
+            </tr>
+            <tr>
+              <td>Just Coding</td>
+              <td><input type="checkbox" class="events" name="JustCoding"></td>
+            </tr>
+            <tr>
+              <td>Recode It!</td>
+              <td><input type="checkbox" class="events" name="Recode_It"></td>
+            </tr>
+            <tr>
+              <td>Code Buddy</td>
+              <td><input type="checkbox" class="events" name="Code_Buddy"><br></td>
+            </tr>
+            <tr>
+              <td>BugOff</td>
+              <td><input type="checkbox" class="events" name="Bug_Off"><br></td>
+            </tr>
+            <tr>
+              <td>Electroquest</td>
+              <td> <input type="checkbox" class="events" name="ElectroQuest"><br></td>
+            </tr>
+            <tr>
+              <td>DataQuest</td>
+              <td><input type="checkbox" class="events" name="DataQuest"><br></td>
+            </tr>
+            <tr>
+              <td>Web and Android Development</td>
+              <td><input type="checkbox" class="events" name="Web_and_App_Development"><br></td>
+            </tr>
+            <tr>
+              <td>Quiz2Bid</td>
+              <td><input type="checkbox" class="events" name="Quiz2Bid"><br></td>
+            </tr>
+            <tr>
+              <td>Fandom Quiz</td>
+              <td><input type="checkbox" class="events" name="Fandom"><br></td>
+            </tr>
+            <tr>
+              <td>Insight</td>
+              <td><input type="checkbox" class="events" name="Insight"><br></td>
+            </tr>
+            <tr>
+              <td>Cerebro</td>
+              <td><input type="checkbox" class="events" name="Cerebro"><br></td>
+            </tr>
+            <tr>
+              <td>Photoshop Royale</td>
+              <td><input type="checkbox" class="events" name="Photoshop_Royale"><br></td>
+            </tr>
+
+          </table>
+          <input type="submit" value="Register"><br>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      Volunteer Name
+    </div>
+
+  </div>
+
+
+
+</body>
+<!-- 
+<script type="text/javascript">
+  function newreg() {
+    var checkboxes = document.getElementsByClassName("events");
+    var checked = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        checked.push(checkboxes[i].name);
+      }
+    }
+    for (var j = 0; j < checked.length; j++) {
+      alert(checked[j]);
+    }
+
+  return checked;
+}
+</script>
+
+
+<script type="text/javascript">
+
+  function add() {
+    $.ajax({
+      type: "POST",
+      url: "/add_data2",
+      data: {
+        csrfmiddlewaretoken: '{{csrf_token}}',
+        event: JSON.stringify(newreg()),
+        userid: "{{userid}}",
+      },
+      success: function () {
+      }
+    });
+  }
+</script> -->
+
+<!-- <script>
+
+  function add() {
+    var checkboxes = document.getElementsByClassName("events");
+    var checked = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked) {
+        checked.push(checkboxes[i].name);
+      }
+    }
+    for (var j = 0; j < checked.length; j++) {
+      alert(checked[j]);
+    }
+    var partic1 = document.getElementsById("participant1").value;
+    var partic2 = document.getElementsById("participant2").value;
+    console.log(partic1);
+    
+    alert(partic1); -->
+    <!-- // $.ajax({
+    //   type: "POST",
+    //   url: "/add_data",
+    //   data: {
+    //     csrfmiddlewaretoken: '{{csrf_token}}',
+    //     event: JSON.stringify(checked),
+    //     name1: partic1,
+    //     name2: partic2,
+    //   },
+    //   success: function () {
+    //   }
+    // });
+  } -->
+
+<!-- </script> -->
+
+</html>

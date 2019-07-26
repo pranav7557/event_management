@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #252525;
+    font-family: sans-serif;
+    background-image: url("bg.jpg");
+    height: 100vw;
+    width: 100vw;
+  }
+
+  .main-title {
+    text-shadow: 2px 2px 2px green;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    color: #F9F1E9;
+    text-align: center;
+    top: 10%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+ }
+ 
+ form{
+    margin-top: 130px;
+    border-radius:20px  20px 0 0 ;
+    background: transparent;
+    color:white;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+  }
+  input.events{
+      width: 40px;
+      height: 40px;
+  }

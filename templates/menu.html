@@ -29,7 +29,7 @@
      {% csrf_token %}
     <button type="submit" id="REGISTERED" formaction= "/search/" >REGISTERED</button>
     <br>
-    <button type="submit" id="REGISTER" formaction="">REGISTER</button>
+    <button type="submit" id="REGISTER" formaction="{% url 'register' %}">REGISTER</button>
     <br>
     <button type="submit" id="EVENTS" formaction="{% url 'events' %}">EVENTS</button>
 

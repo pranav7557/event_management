@@ -1,437 +1,307 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>participant data</title>
+    <title>participant data</title>
 
 
-<link rel="stylesheet" type="text/css" href="{% static 'page2.css' %}">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'page2.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
+
 <body>
 
 
 
-<div class="container demo">
-   <div class="content">
-      <div id="large-header" class="large-header">
-         <canvas id="demo-canvas"></canvas>
-         <h1 class="main-title"><span class="thin"></span>Participant Data</h1>
-      </div>
-   </div>
-</div>
-
-<br>
-
-<table class="table table-striped" width="80%">
-  <tbody>
-
-<tr>    
-    <th>PARICIPANT 1:</th>
-    <td>{{data.participant1}}</td>
-</tr>
-
-<tr>    
-    <th>PARTICIPANT 2:</th>
-    <td>{{data.participant2}}</td>
-</tr>    
-
-<tr>    
-    <th>PULZION ID:</th>
-    <td>{{data.id}}</td>
-</tr>
-
-<tr>    
-    <th>EMAIL ID:</th>
-    <td>{{data.mail}}</td>
-</tr>
-
-<tr>    
-    <th>CONTACT NO:</th>
-    <td>{{data.contact}}</td>
-</tr>
-
-<tr>    
-    <th>COLLEGE:</th>
-    <td>{{data.collegeName}}</td>
-</tr>
-
-<tr>    
-    <th rowspan="13">EVENTS PARTICIPATED:</th>
-    <td>
-        {% if not data.attendance %}
-    {% for x in events %}
-
-    {{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')" ><br>
-
-{%endfor %}
-{% else %}
-
-{% if data.attendance.BugOff %}
-    {% if data.attendance.BugOff == "false" %}
-        BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'BugOff' in events%}
-        BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-{% if data.attendance.DC %}
-    {% if data.attendance.DC == "false" %}
-        DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'DC' in events%}
-        DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-{% if data.attendance.Cerebro %}
-    {% if data.attendance.Cerebro == "false" %}
-        Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'Cerebro' in events%}
-        Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-{% if data.attendance.DataQuest %}
-    {% if data.attendance.DataQuest == "false" %}
-        DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'DataQuest' in events%}
-        DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-{% if data.attendance.Friends %}
-    {% if data.attendance.Friends == "false" %}
-        Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'Friends' in events%}
-        Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-{% if data.attendance.Marvel %}
-    {% if data.attendance.Marvel == "false" %}
-        Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
-    {% endif %}
-{%else%}
-    {%if 'Marvel' in events%}
-        Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')" ><br>
-    {%endif%}
-{%endif%}
-
-
-
-
-<!--{% for x in Events %}-->
-<!--    {{x}}-->
-<!--{% endfor %}-->
-<!--<p>{{i.Events}}</p>-->
-
-{% endif %}
-    </td>
-</tr>
-
-  </tbody>
-</table>
-
-<a href="{% url 'search' %}"> <button> Done </button></a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="container">
-  <h2>Bordered Table</h2>
-  <p>The .table-bordered class adds borders to a table:</p>            
-  <table class="table table-bordered">
-    <tbody>
-<tr>    
-    <th>REGISTERED NAME:</th>
-    <td> tejas abhay joshi </td>
-</tr>
-
-<tr>    
-    <th>EMAIL ID:</th>
-    <td>anujsaoji@gmail.com</td>
-</tr>
-
-<tr>    
-    <th>CONTACT NO:</th>
-    <td>1234567890</td>
-</tr>
-
-<tr>    
-    <th>COLLEGE:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>PULZION ID:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>PARICIPANT 1:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>PARTICIPANT 2:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>EVENT:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>EVENT ROOM NO:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>SLOT:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>TIME:</th>
-    <td></td>
-</tr>
-
-<tr>    
-    <th>TOTAL EVENTS PARTICIPATED:</th>
-    <td></td>
-</tr>
-    </tbody>
-  </table>
-</div> -->
-
-
-
-
-
-
-
-
-
-<!-- <table class="opening-hours table table-hover table-condensed table-bordered">
-	
-<tbody>
-
-<tr>	
-	<th>REGISTERED NAME:</th>
-    <td> tejas abhay joshi </td>
-</tr>
-
-<tr>	
-	<th>EMAIL ID:</th>
-    <td>anujsaoji@gmail.com</td>
-</tr>
-
-<tr>	
-	<th>CONTACT NO:</th>
-    <td>1234567890</td>
-</tr>
-
-<tr>	
-	<th>COLLEGE:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>PULZION ID:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>PARICIPANT 1:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>PARTICIPANT 2:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>EVENT:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>EVENT ROOM NO:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>SLOT:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>TIME:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>TOTAL EVENTS PARTICIPATED:</th>
-    <td></td>
-</tr>
-		
-
-</tbody>
-</table> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <table>
-
-<tr>	
-	<th>REGISTERED NAME</th>
-    <td>vgdjvbdsvansndvkbaerbvke </td>
-</tr>
-<tr>	
-	<th>EMAIL ID</th>
-    <td>cwagegjf ahqfkahrg ke,</td>
-</tr>
-
-<tr>	
-	<th>CONTACT NO:</th>
-    <td>wwfywbyibrgovube</td>
-</tr>
-
-<tr>	
-	<th>COLLEGE </th>
-    <td></td>
-</tr>
-<tr>	
-	<th>PULZION ID</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>PARICIPANT 1:</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>PARTICIPANT 2:</th>
-    <td></td>
-</tr>
-
-<tr>	
-	<th>EVENT</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>EVENT ROOM NO</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>SLOT</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>TIME</th>
-    <td></td>
-</tr>
-<tr>	
-	<th>TOTAL EVENTS PARTICIPATED</th>
-    <td></td>
-</tr>
-
-
-
-</table>
- -->
-
-
-
-
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous">  
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-<script type="text/javascript">
-    
-    function att(eve,id){
-        $.ajax({
-            type: "POST",
-            url: "/att",
-            data: {
-                csrfmiddlewaretoken: '{{csrf_token}}',
-                event: eve,
-                val: document.getElementById("event_"+eve).checked,
-                userid: "{{userid}}",
-                id:id,
-            },
-            success: function(){
-
-            }
-        });
-
-    }
-
-</script>
+    <div class="container demo">
+        <div class="content">
+            <div id="large-header" class="large-header">
+                <canvas id="demo-canvas"></canvas>
+                <h1 class="main-title"><span class="thin"></span>Participant Data</h1>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <table class="table table-striped" width="80%">
+        <tbody>
+
+            <tr>
+                <th>PARICIPANT 1:</th>
+                <td>{{data.participant1}}</td>
+            </tr>
+
+            <tr>
+                <th>PARTICIPANT 2:</th>
+                <td>{{data.participant2}}</td>
+            </tr>
+
+            <tr>
+                <th>PULZION ID:</th>
+                <td>{{data.id}}</td>
+            </tr>
+
+            <tr>
+                <th>EMAIL ID:</th>
+                <td>{{data.mail}}</td>
+            </tr>
+
+            <tr>
+                <th>CONTACT NO:</th>
+                <td>{{data.contact}}</td>
+            </tr>
+
+            <tr>
+                <th>COLLEGE:</th>
+                <td>{{data.collegeName}}</td>
+            </tr>
+
+            <tr>
+                <th rowspan="13">EVENTS PARTICIPATED:</th>
+                <td>
+                    {% if not data.attendance %}
+                    {% for x in events %}
+
+                    {{x}}&nbsp;&nbsp;<input type="checkbox" id="event_{{x}}" onclick="att('{{x}}','{{data.id}}')"><br>
+
+                    {%endfor %}
+                    {% else %}
+
+                    {% if data.attendance.BugOff %}
+                    {% if data.attendance.BugOff == "false" %}
+                    BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'BugOff' in events%}
+                    BugOff<input type="checkbox" id="event_BugOff" onclick="att('BugOff','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.DC %}
+                    {% if data.attendance.DC == "false" %}
+                    DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'DC' in events%}
+                    DC<input type="checkbox" id="event_DC" onclick="att('DC','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Cerebro %}
+                    {% if data.attendance.Cerebro == "false" %}
+                    Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Cerebro' in events%}
+                    Cerebro<input type="checkbox" id="event_Cerebro" onclick="att('Cerebro','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.DataQuest %}
+                    {% if data.attendance.DataQuest == "false" %}
+                    DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'DataQuest' in events%}
+                    DataQuest<input type="checkbox" id="event_DataQuest" onclick="att('DataQuest','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Friends %}
+                    {% if data.attendance.Friends == "false" %}
+                    Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Friends' in events%}
+                    Friends<input type="checkbox" id="event_Friends" onclick="att('Friends','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Marvel %}
+                    {% if data.attendance.Marvel == "false" %}
+                    Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Marvel' in events%}
+                    Marvel<input type="checkbox" id="event_Marvel" onclick="att('Marvel','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Code_Buddy %}
+                    {% if data.attendance.Code_Buddy == "false" %}
+                    Code_Buddy<input type="checkbox" id="event_Code_Buddy"
+                        onclick="att('Code_Buddy','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Code_Buddy' in events%}
+                    Code_Buddy<input type="checkbox" id="event_Code_Buddy"
+                        onclick="att('Code_Buddy','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Dextrous %}
+                    {% if data.attendance.Dextrous == "false" %}
+                    Dextrous<input type="checkbox" id="event_Dextrous" onclick="att('Dextrous','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Dextrous' in events%}
+                    Dextrous<input type="checkbox" id="event_Dextrous" onclick="att('Dextrous','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.ElectroQuest %}
+                    {% if data.attendance.ElectroQuest == "false" %}
+                    ElectroQuest<input type="checkbox" id="event_ElectroQuest"
+                        onclick="att('ElectroQuest','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'ElectroQuest' in events%}
+                    ElectroQuest<input type="checkbox" id="event_ElectroQuest"
+                        onclick="att('ElectroQuest','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.GOT %}
+                    {% if data.attendance.GOT == "false" %}
+                    GOT<input type="checkbox" id="event_GOT" onclick="att('GOT','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'GOT' in events%}
+                    GOT<input type="checkbox" id="event_GOT" onclick="att('GOT','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Harry_Potter %}
+                    {% if data.attendance.Harry_Potter == "false" %}
+                    Harry_Potter<input type="checkbox" id="event_Harry_Potter"
+                        onclick="att('Harry_Potter','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Harry_Potter' in events%}
+                    Harry_Potter<input type="checkbox" id="event_Harry_Potter"
+                        onclick="att('Harry_Potter','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Insight %}
+                    {% if data.attendance.Insight == "false" %}
+                    Insight<input type="checkbox" id="event_Insight" onclick="att('Insight','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Insight' in events%}
+                    Insight<input type="checkbox" id="event_Insight" onclick="att('Insight','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+
+                    {% if data.attendance.JustCoding %}
+                    {% if data.attendance.JustCoding == "false" %}
+                    JustCoding<input type="checkbox" id="event_JustCoding"
+                        onclick="att('JustCoding','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'JustCoding' in events%}
+                    JustCoding<input type="checkbox" id="event_JustCoding"
+                        onclick="att('JustCoding','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+
+                    {% if data.attendance.Photoshop_Royale %}
+                    {% if data.attendance.Photoshop_Royale == "false" %}
+                    Photoshop_Royale<input type="checkbox" id="event_Photoshop_Royale"
+                        onclick="att('Photoshop_Royale','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Photoshop_Royale' in events%}
+                    Photoshop_Royale<input type="checkbox" id="event_Photoshop_Royale"
+                        onclick="att('Photoshop_Royale','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+
+                    {% if data.attendance.Quiz2Bid %}
+                    {% if data.attendance.Quiz2Bid == "false" %}
+                    Quiz2Bid<input type="checkbox" id="event_Quiz2Bid" onclick="att('Quiz2Bid','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Quiz2Bid' in events%}
+                    Quiz2Bid<input type="checkbox" id="event_Quiz2Bid" onclick="att('Quiz2Bid','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Recode_It %}
+                    {% if data.attendance.Recode_It == "false" %}
+                    Recode_It<input type="checkbox" id="event_Recode_It" onclick="att('Recode_It','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Recode_It' in events%}
+                    Recode_It<input type="checkbox" id="event_Recode_It" onclick="att('Recode_It','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+                    {% if data.attendance.Web_and_App_Development %}
+                    {% if data.attendance.Web_and_App_Development == "false" %}
+                    Web_and_App_Development<input type="checkbox" id="event_Web_and_App_Development" onclick="att('Web_and_App_Development','{{data.id}}')"><br>
+                    {% endif %}
+                    {%else%}
+                    {%if 'Web_and_App_Development' in events%}
+                    Web_and_App_Development<input type="checkbox" id="event_Web_and_App_Development" onclick="att('Web_and_App_Development','{{data.id}}')"><br>
+                    {%endif%}
+                    {%endif%}
+
+
+                    <!--{% for x in Events %}-->
+                    <!--    {{x}}-->
+                    <!--{% endfor %}-->
+                    <!--<p>{{i.Events}}</p>-->
+
+                    {% endif %}
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <center>
+        <a href="{% url 'search' %}"> <button> Done </button></a>
+    </center>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+
+        function att(eve, id) {
+            $.ajax({
+                type: "POST",
+                url: "/att",
+                data: {
+                    csrfmiddlewaretoken: '{{csrf_token}}',
+                    event: eve,
+                    val: document.getElementById("event_" + eve).checked,
+                    userid: "{{userid}}",
+                    id: id,
+                },
+                success: function () {
+                }
+            });
+        }
+    </script>
 
 </body>
+
 </html>
