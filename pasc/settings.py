@@ -121,5 +121,5 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"), # That's it!!
-    '/var/www/static/',
+    #'/var/www/static/',
 )
