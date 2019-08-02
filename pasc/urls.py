@@ -29,5 +29,6 @@ urlpatterns = [
     path('data', data),
     path('att', update_att),
     path('add_data', add_data),
-    path('menu',menu,name="menu"),
+    path('menu',menu, name="menu"),
+    path('login',signIn ,name="login"),
 ]

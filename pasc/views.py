@@ -227,9 +227,11 @@ def add_data(request):
         'id': random2,
         'contact': cont,
         'collegeName': college,
+        'volunteer':vol,
     }
 
-    db.collection(u'Combined').document(random1).set(d1)
+    print(d1)
+    #db.collection(u'Combined').document(random1).set(d1)
     
     d2 = {
         'participant1': name1,
@@ -238,6 +240,8 @@ def add_data(request):
         'id': random2,
         'contact': cont,
         'collegeName': college,
+        'score':'0',
+        'volunteer':vol,
     }
 
     for y in x:
@@ -245,6 +249,7 @@ def add_data(request):
                           for n in range(20)])
         print(y)
         print(random3)
-        db.collection(y).document(random3).set(d2)  
+        print(d2)
+        #db.collection(y).document(random3).set(d2)  
               
     return render(request, "page3.html",{"id":random2})
