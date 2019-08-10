@@ -5,15 +5,8 @@ import random
 import string
 import pyrebase
 
-# my database
-'''import firebase_admin
-from firebase_admin import credentials, firestore
-cred = credentials.Certificate("/home/pk/Downloads/event19.json")
-firebase_admin.initialize_app(cred)
-db = firestore.client()'''
-
 # pasc demo database
-from google.cloud import firestore
+# from google.cloud import firestore
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -35,22 +28,6 @@ config = {
 firebase = pyrebase.initialize_app(config)
 authe = firebase.auth()
 database = firebase.database()
-
-# random = ''.join([random.choice(string.ascii_letters + string.digits)
-#                 for n in range(20)])
-
-# print (random)
-
-# data = {
-#     'name': 'yash',
-#     'email': 'pratik@gmail.com',
-#     'events': ['web', 'fan'],
-#     'id': 'sgsdf56',
-#     'att': {'qrovnrio': False}
-# }
-
-# db.collection(u'cerebro').document(random).set(data)
-
 
 def signIn(request):
     return render(request, "login.html")
@@ -120,6 +97,7 @@ def events(request):
 
 def register(request):
     return render(request, "new_reg.html")
+
 
 def menu(request):
     return render(request, "menu.html")
@@ -227,12 +205,12 @@ def add_data(request):
         'id': random2,
         'contact': cont,
         'collegeName': college,
-        'volunteer':vol,
+        'volunteer': vol,
     }
 
     print(d1)
-    #db.collection(u'Combined').document(random1).set(d1)
-    
+    db.collection(u'Combined').document(random1).set(d1)
+
     d2 = {
         'participant1': name1,
         'participant2': name2,
@@ -240,16 +218,38 @@ def add_data(request):
         'id': random2,
         'contact': cont,
         'collegeName': college,
-        'score':'0',
-        'volunteer':vol,
+        'score': '0',
+        'volunteer': vol,
     }
 
     for y in x:
         random3 = ''.join([random.choice(string.ascii_letters + string.digits)
-                          for n in range(20)])
+                           for n in range(20)])
         print(y)
         print(random3)
         print(d2)
-        #db.collection(y).document(random3).set(d2)  
-              
-    return render(request, "page3.html",{"id":random2})
+        db.collection(y).document(random3).set(d2)
+
+    return render(request, "page3.html", {"id": random2})
+
+
+def rep(req):
+    # eventname=req.POST['event']
+    users_ref = db.collection(req.POST['event'])
+    docs = users_ref.where('attendance', '==', 'true').get()
+    # docs1=users_ref.where(not 'attendance').get()
+    print('hihiello')
+    # docs = users_ref.get()
+    # data = docs.to_dict()
+    # print(docs)
+    global data1
+    data1 = []
+    for i in docs:
+        # print(u'{} => {}'.format(doc.id, doc.to_dict()))
+        data1.append(i.to_dict())
+    return HttpResponse("")
+
+
+def rep_(req):
+    print(data1)
+    return render(req, 'rep.html', {'db': data1})

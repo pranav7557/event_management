@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Neuton&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'pulzion1.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide&display=swap" rel="stylesheet">
+    <!-- <title>{% block 'title'%} {%endblock%}</title> -->
+</head>
+
+<body>
+    <div class="container mt-5">
+        <table class="table table-striped table-dark">
+            <thead>
+                <td>Name</td>
+                <td>Id</td>
+                <td>Slot</td>
+                <!--        <td>Id</td>-->
+            </thead>
+            <tbody>
+
+                {%for i in db%}
+                <tr>
+                    <!--     <th scope="row"></th>-->
+                    <td>{{i.participant1}}</td>
+                    <td>{{i.id}}</td>
+                    <td>{{i.slot}}</td>
+                    <!--     <td>{{i.mail}}</td>-->
+                    <!--     <td>{{i.collegeName}}</td>-->
+                </tr>
+                {%endfor%}
+
+            </tbody>
+        </table>
+    </div>
+
+    <br>
+    <br>
+
+    <center>
+        <a href="{% url 'menu' %}"> <button> Done </button></a>
+    </center>
+</body>
+
+</html>
