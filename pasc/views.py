@@ -25,9 +25,11 @@ config = {
     'appId': "1:100193450230:web:45bcd71bc8cc1506"
 }
 
+
 firebase = pyrebase.initialize_app(config)
 authe = firebase.auth()
 database = firebase.database()
+
 
 def signIn(request):
     return render(request, "login.html")
@@ -144,7 +146,10 @@ def add_data(request):
         eq = request.POST.get('ElectroQuest')
         dq = request.POST.get('DataQuest')
         wa = request.POST.get('Web_and_App_Development')
-        fan = request.POST.get('Fandom')
+        hp = request.POST.get('Harry_Potter')
+        got = request.POST.get('GOT')
+        fr = request.POST.get('Friends')
+        mar = request.POST.get('Marvel')
         ins = request.POST.get('Insight')
         pr = request.POST.get('Photoshop_Royale')
 
@@ -175,9 +180,6 @@ def add_data(request):
     if wa == 'on':
         x.append('Web_and_App_Development')
 
-    if fan == 'on':
-        x.append('Fandom')
-
     if ins == 'on':
         x.append('Insight')
 
@@ -186,6 +188,18 @@ def add_data(request):
 
     if cer == 'on':
         x.append('Cerebro')
+
+    if hp == 'on':
+        x.append('Harry_Potter')
+        
+    if got == 'on':
+        x.append('GOT')
+        
+    if fr == 'on':
+        x.append('Friends')
+        
+    if mar == 'on':
+        x.append('Marvel')
 
     random1 = ''.join([random.choice(string.ascii_letters + string.digits)
                        for n in range(20)])
@@ -253,3 +267,4 @@ def rep(req):
 def rep_(req):
     print(data1)
     return render(req, 'rep.html', {'db': data1})
+
