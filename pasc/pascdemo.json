@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "pascregistrationappdemo",
+  "private_key_id": "4a4f746569effd591880ed13a758b69e988bc569",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbeuIQEwqrxA6D\nvaOBWNCOb4BFh+W8hIXqG9arvUS22180KBNO/rXSzKgcE2JbpZncLr2F73001DdR\nx3EudSZ7lGPNYvt1xMHGMUfabtUEMBPCGPO0/ovtZS9+IGFG0f0bpk1uK1DsNJF0\n8zHpyfT5gy9je9ZTmOovFv0CxoMyVu31WA07ba9GKVka5byXNLoslOfmPd2wjME4\n8JwtKj09uSJ613CagUQp8eURSo2/PsTf6a1VIJFzfbCh6gDJaozYOuhdvdMsxDJL\nXxP3Ln7HsMxc8T6UwSMzU/gleZLEavzxdZ+aRo4ANiuoY9IQQh5dQZeT5zeudW2h\nk0jIpApJAgMBAAECggEABU7SUVTeVkDDvOA6RMlgP50nCyr9lmgPn+r0GkfyIGv5\no9aMf6kvaNn3qUaa9S5VlhNwadLcu16euPv52uspYZec1vLqJZaz9agIOja+TU2u\nWfqe1jc7uvjcpzrUr21jNUNdZwVl71Tmy21SBFAi/CiuwVIANm93H0z5oq9hkMVU\nSswj8QHUfqxsqUCEooQCY41cjVmZ2zSbaz5IGbFkgDxSfnl5BFn/Bd/ZrILr/dQG\nJyum8iB7Y2riM7PNlU3pyM8aNUqYAtRbjJLAp8VxZc55rHKEbkgdgZg7vLwZEyEo\n+Vm+acIw2rhOXlIrqeWknA0UntF2gUvAKyRTeHOMKQKBgQDxz6L6529t6DXSsvp+\nUKjro5+lz/bKeXvDqSt19IJNay+bTRj4hHyD+Ax1E+C1uuU6pq6LbeRH2yWHva/K\nIo7fgZjX35R5JyXLZNo/CeyM8KVO0pkPLgk0Br4FHoZyFuOCF7V12zGuQHCxZ6CG\nZ/YcFC7YFGmyBpdSMQ/eqAfXZQKBgQDoW8zpOXEvdKYcp1ltU4QmZpzRclQEZT+/\nkjSUEWGCf2Rb/KydEQlGkH7dU0XQwMl+gkT5r0M4rbzbZuVqD4FvnGRcbuvBN/Ze\nfqF90+2PJaB6S6u8zvaRApQsPwhfEYs7YWtHFrvwaLaTl1Ayee+goh7n91MZC7DA\ntamkBflzFQKBgGdmWlLf1A4zVZCbZ/HLm+/nL8U/gFBkUkAAfs0ZmP5x7xGBjkP2\noyfrUaher6AGIy9JRynn+82eMBYzTpAo5t88E5d7y4li7A5lOc3q+HPsE0P5Wenb\nzaOpnmeh/eubTf27FaUn7b6NX6L8pO/UVLD9EGrlj6zIlLxYrmiPgYrhAoGBAOQM\nHSuVXfnmcZXTxVggTKXnted2XvFFcfCSDRp5iIssfpIthjhNXR4teOW98dp1LA0G\ny62GjuIU2jM3ZNfYSgABrRpvHuEvDJUnkVXOZuxEUKFWnUIcmjAuKMDYSF4N+OmZ\nrlFCBcho7TAjpOk1dbLhCpY9zgfZymsIoGtEFdQVAoGBAJm5xujjzoVvwiAfe6Kj\nmKrGj+h4RH2A8qDKHJIVerhT4h9Lp9pZfWnjk0xOB+R3H3X+R3pKDi8XFgXSNcof\ny7sbq6sxe/fCaJ72dHhoPnp5/hIBjv7bEPufhSMZKtjiD0xeIGU8wXBtY7mzkILx\ncRsKUmF4gGdeJHwSftQZHVg9\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-db0o6@pascregistrationappdemo.iam.gserviceaccount.com",
+  "client_id": "101838619172619121941",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-db0o6%40pascregistrationappdemo.iam.gserviceaccount.com"
+}

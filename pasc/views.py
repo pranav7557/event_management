@@ -4,13 +4,17 @@ from django.shortcuts import render
 import random
 import string
 import pyrebase
+import os.path
 
 # pasc demo database
 # from google.cloud import firestore
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred = credentials.Certificate("/home/pk/pasc/pascdemo.json")
+cred = credentials.Certificate("pascdemo.json")
+# my_path = os.path.abspath(os.path.dirname(__file__))
+# path = os.path.join(my_path, "../pascdemo.json")
+# cred = credentials.Certificate(path)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
@@ -191,13 +195,13 @@ def add_data(request):
 
     if hp == 'on':
         x.append('Harry_Potter')
-        
+
     if got == 'on':
         x.append('GOT')
-        
+
     if fr == 'on':
         x.append('Friends')
-        
+
     if mar == 'on':
         x.append('Marvel')
 
@@ -267,4 +271,3 @@ def rep(req):
 def rep_(req):
     print(data1)
     return render(req, 'rep.html', {'db': data1})
-
