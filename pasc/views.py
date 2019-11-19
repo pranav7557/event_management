@@ -4,10 +4,11 @@ from django.shortcuts import render
 import random
 import string
 import pyrebase
+
 import os.path
 
 # pasc demo database
-# from google.cloud import firestore
+#from google.cloud import firestore
 import firebase_admin
 from firebase_admin import credentials, firestore
 
@@ -35,12 +36,22 @@ authe = firebase.auth()
 database = firebase.database()
 
 
+email = ""
+passw = ""
+
+
 def signIn(request):
+    global email
+    global passw
+    email = ""
+    passw = ""
     return render(request, "login.html")
 
 
 def postsign(request):
 
+    global email
+    global passw
     email = request.POST.get('email')
     passw = request.POST.get("pass")
     try:
@@ -94,18 +105,38 @@ def func(req):
 
 
 def search(request):
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "login.html", {"messg": message})
     return render(request, "page1.html")
 
 
 def events(request):
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "login.html", {"messg": message})
     return render(request, "pulzion.html")
 
 
 def register(request):
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "login.html", {"messg": message})
     return render(request, "new_reg.html")
 
 
 def menu(request):
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "login.html", {"messg": message})
     return render(request, "menu.html")
 
 
@@ -130,6 +161,11 @@ def data(request):
 
 
 def add_data(request):
+    try:
+        user = authe.sign_in_with_email_and_password(email, passw)
+    except:
+        message = "Invalid Credentials"
+        return render(request, "login.html", {"messg": message})
     x = []
 
     if request.method == 'POST':
@@ -139,6 +175,7 @@ def add_data(request):
         vol = request.POST.get('volunteer')
         emailid = request.POST.get('mail')
         cont = request.POST.get('contact')
+        cost = request.POST.get('cost')
 
         dex = request.POST.get('Dextrous')
         qb = request.POST.get('Quiz2Bid')
@@ -146,7 +183,7 @@ def add_data(request):
         cer = request.POST.get('Cerebro')
         jc = request.POST.get('JustCoding')
         cb = request.POST.get('Code_Buddy')
-        bg = request.POST.get('Bug_Off')
+        bg = request.POST.get('BugOff')
         eq = request.POST.get('ElectroQuest')
         dq = request.POST.get('DataQuest')
         wa = request.POST.get('Web_and_App_Development')
@@ -173,7 +210,7 @@ def add_data(request):
         x.append('Code_Buddy')
 
     if bg == 'on':
-        x.append('Bug_Off')
+        x.append('BugOff')
 
     if eq == 'on':
         x.append('ElectroQuest')
@@ -224,6 +261,8 @@ def add_data(request):
         'contact': cont,
         'collegeName': college,
         'volunteer': vol,
+        'cost': cost,
+        'slot': "null",
     }
 
     print(d1)
@@ -236,8 +275,8 @@ def add_data(request):
         'id': random2,
         'contact': cont,
         'collegeName': college,
-        'score': '0',
         'volunteer': vol,
+        'slot': "null",
     }
 
     for y in x:

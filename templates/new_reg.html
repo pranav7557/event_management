@@ -14,8 +14,8 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
-    </script>
-   <link rel="stylesheet" type="text/css" href="{% static 'new_reg.css' %}">
+  </script>
+  <link rel="stylesheet" type="text/css" href="{% static 'new_reg.css' %}">
   <!-- <link rel="stylesheet" href="new_reg.css"> -->
 
 </head>
@@ -40,7 +40,7 @@
             <div class="row">
               <div class="col-25"><label for="participant1">Participant 1</label></div>
               <div class="col-75"><input type="text" name="participant1" id="participant1"
-                  placeholder="  Name of Participant 1"></div>
+                  placeholder="  Name of Participant 1" required></div>
             </div>
             <div class="row">
               <div class="col-25"><label for="participant2">Participant 2</label></div>
@@ -49,19 +49,19 @@
             </div>
             <div class="row">
               <div class="col-25"><label for="mail">Email ID</label></div>
-              <div class="col-75"><input type="email" name="mail" placeholder="  Email ID"></div>
+              <div class="col-75"><input type="email" name="mail" placeholder="  Email ID" required></div>
             </div>
             <div class="row">
               <div class="col-25"><label for="contact">Mobile Number</label></div>
-              <div class="col-75"><input type="tel" name="contact" placeholder="  Mobile Number"></div>
+              <div class="col-75"><input type="tel" name="contact" placeholder="  Mobile Number" required></div>
             </div>
             <div class="row">
               <div class="col-25"><label for="collegename">College</label></div>
-              <div class="col-75"><input type="text" name="collegeName" placeholder="  College Name"></div>
+              <div class="col-75"><input type="text" name="collegeName" placeholder="  College Name" required></div>
             </div>
             <div class="row">
               <div class="col-25"><label for="volunteer">Volunteer</label></div>
-              <div class="col-75"><input type="text" name="volunteer" placeholder="  Volunteer Name"></div>
+              <div class="col-75"><input type="text" name="volunteer" placeholder="  Volunteer Name" required></div>
             </div>
           </div>
           <h3 style="padding-top: 20px;">Events</h3><br>
@@ -72,78 +72,144 @@
               <div class="col-sm-3"><input type="checkbox" class="events" name="Dextrous"></div>
               <div class="col-sm-3"></div>
             </div>
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Just Coding</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="JustCoding"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Recode It!</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Recode_It"></div>
               <div class="col-sm-3"></div>
             </div>
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Code Buddy</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Code_Buddy"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">BugOff</div>
-              <div class="col-sm-3"><input type="checkbox" class="events" name="Bug_Off"></div>
+              <div class="col-sm-3"><input type="checkbox" class="events" name="BugOff"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Electroquest</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="ElectroQuest"></div>
               <div class="col-sm-3"></div>
             </div>
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">DataQuest</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="DataQuest"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Web and Android Development</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Web_and_App_Development"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Quiz2Bid</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Quiz2Bid"></div>
               <div class="col-sm-3"></div>
             </div>
-            <div class="row">
+            <br>
+
+            <!-- <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Fandom Quiz</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Fandom"></div>
               <div class="col-sm-3"></div>
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Insight</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Insight"></div>
               <div class="col-sm-3"></div>
             </div>
+
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Cerebro</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Cerebro"></div>
               <div class="col-sm-3"></div>
             </div>
+            <br>
+
             <div class="row">
               <div class="col-sm-3"></div>
               <div class="col-sm-3">Photoshop Royale</div>
               <div class="col-sm-3"><input type="checkbox" class="events" name="Photoshop_Royale"></div>
               <div class="col-sm-3"></div>
             </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">GOT</div>
+              <div class="col-sm-3"><input type="checkbox" class="events" name="GOT"></div>
+              <div class="col-sm-3"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">Harry Potter</div>
+              <div class="col-sm-3"><input type="checkbox" class="events" name="Harry_Potter"></div>
+              <div class="col-sm-3"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">Marvel V/s DC</div>
+              <div class="col-sm-3"><input type="checkbox" class="events" name="Marvel"></div>
+              <div class="col-sm-3"></div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">Friends</div>
+              <div class="col-sm-3"><input type="checkbox" class="events" name="Friends"></div>
+              <div class="col-sm-3"></div>
+            </div>
+
+            <br>
+
+            <div class="row">
+              <div class="col-25"><label for="cost">Total Cost</label></div>
+              <div class="col-75"><input type="text" name="cost" id="cost" placeholder=" Enter the total cost" required>
+              </div>
+            </div>
+
+            <br>
 
             <div class="row">
               <div class="col-sm-4"></div>
@@ -165,7 +231,7 @@
 
 
 </body>
-<!-- 
+<!--
 <script type="text/javascript">
   function newreg() {
     var checkboxes = document.getElementsByClassName("events");
@@ -212,7 +278,7 @@
     var partic1 = document.getElementsById("participant1").value;
     var partic2 = document.getElementsById("participant2").value;
     console.log(partic1);
-    
+
     alert(partic1); -->
 <!-- // $.ajax({
     //   type: "POST",
